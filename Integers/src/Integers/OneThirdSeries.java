@@ -1,4 +1,4 @@
-package src;
+package Integers;
 
 /**
  * Given a number series, return true if there is even one number that appears more than 1/3rd the length of the series.
