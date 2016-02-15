@@ -33,7 +33,7 @@ public class NearestPalindrome {
 
     }
 
-    public int getNearestPalindrome(int number)throws Exception{
+    public static int getNearestPalindrome(int number)throws Exception{
         //Validation
         if(!isValidInput(number)){
             throw  new IllegalArgumentException("Input number not valid");
@@ -61,13 +61,13 @@ public class NearestPalindrome {
         }
 
         //Compare distance from the actual number , return the minimum
-        if((number - beforeNum) < (nextNum -number)){
+        if((number - beforeNum) <= (nextNum -number)){
             return beforeNum;
         }
         return nextNum;
     }
 
-    private boolean isValidInput(int number) {
+    private static boolean isValidInput(int number) {
         if(number < 0) return false;
         return true;
     }
