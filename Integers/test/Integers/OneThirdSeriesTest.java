@@ -1,3 +1,5 @@
+package Integers;
+
 import Integers.OneThirdSeries;
 import org.junit.Test;
 
