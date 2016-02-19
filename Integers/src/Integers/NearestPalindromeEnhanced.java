@@ -35,10 +35,6 @@ public class NearestPalindromeEnhanced {
         }
     }
 
-    /*public int calculateDist() {
-
-    }*/
-
     public boolean isPalindrome(String str) {
         boolean isPalindrome = true;
         int length;
