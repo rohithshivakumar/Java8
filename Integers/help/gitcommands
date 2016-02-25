@@ -1,0 +1,8 @@
+1)After seeing comments on code changes, use this command to update same
+git commit -va -m "updating git commit"
+
+2) To remove local and remote branch
+(removes local)
+git branch -d rohithbranch
+(removes remote)
+git push origin :rohithbranch

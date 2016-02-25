@@ -1,0 +1,20 @@
+What are the best practices to be followed while designing a REST API?
+1) URI should be self explainatory
+2) Operation should do a single function only (Atomicity)
+3) It should be idempotent. Making same REST calls multiple times should yeild same result.
+4) If there are 3 operations A,B and C of type POST, the results of B should not depend on A or C. Similarly for
+   C and A
+5) Lightweight
+6) Data members should be clearly defined
+7) API should not store any state
+8) Versioning - There must be a way to specify version
+e.g : http://x.y.z.a:<port>/resource/v1.0/
+9) It should support HTTP and HTTPS
+10) How collections (list of objects) are represented
+11) Retain the original purpose of methods available (GET, PUT, POST, PATCH, DELETE)
+12) URI should use Singular and Plural for resources
+13) Date or Time or Timestamp should follow ISO 8601 standard. Always use UTC.
+
+Helpful links for ref:
+1) http://blog.octo.com/en/design-a-rest-api/
+2) http://www.slideshare.net/stormpath/rest-jsonapis
