@@ -6,3 +6,7 @@ git commit -va -m "updating git commit"
 git branch -d rohithbranch
 (removes remote)
 git push origin :rohithbranch
+
+3. To create a local branch and switch to it
+
+git checkout -b <branch name>
