@@ -1,5 +1,6 @@
 package Integers;
 
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -21,12 +22,32 @@ public class NearestPalindromeEnhanced {
 
     public static void main(String args[]) {
         try {
-            int num = 123456;
+            int num = 654321;
             String numStr = String.valueOf(num);
 
+            ArrayList<String> testCases = new ArrayList<>();
+            testCases.add("102");
+            testCases.add("131");
+            testCases.add("54647");
+            testCases.add("654321");
+
             NearestPalindromeEnhanced nearPalindrome = new NearestPalindromeEnhanced();
-            StringBuilder sb = nearPalindrome.eval(new StringBuilder(numStr));
-            System.out.println(sb.toString());
+
+            for(String testCase : testCases) {
+                StringBuilder sb = nearPalindrome.transformUtil(new StringBuilder(testCase),true);
+                System.out.println(sb.toString());
+                String valAdd = sb.toString();
+
+                sb = nearPalindrome.transformUtil(new StringBuilder(numStr),false);
+                System.out.println(sb.toString());
+                String valSub = sb.toString();
+
+                if(nearPalindrome.isPalindrome(valAdd))
+                    System.out.println("Nearest palindrome is : " + valAdd);
+
+                if(nearPalindrome.isPalindrome(valSub))
+                    System.out.println("Nearest palindrome is : " + valSub);
+            }
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -55,11 +76,23 @@ public class NearestPalindromeEnhanced {
         return isPalindrome;
     }
 
-    public StringBuilder eval(StringBuilder str) {
+    /**
+     * Transform the given number.
+     * Transformation steps :
+     *  1) Find the difference between the digits on same mirrored position determined by the mid point of the given number
+     *  2) Based on their positions on the number (Decimal places - units, tenth, hundredth ....), get their values
+     *     multiplied by their decimal place
+     *  3) based on the sign to add or not, the number is added to the original number or subtracted
+     * @param str : the number to whom the nearest palindrome has to be found
+     * @param toAdd : true means add, else subtract
+     * @return
+     */
+    public StringBuilder transformUtil(StringBuilder str, boolean toAdd) {
         StringBuilder temp = new StringBuilder(str);
         try {
             if(null != temp) {
-                for(int i = 0, j = temp.length() - 1; i < temp.length()/2; i++,j--) {
+                int i = 0, j = temp.length() - 1;
+                while(i < temp.length()/2) {
                     char begin = temp.charAt(i);
                     char end = temp.charAt(j);
                     if(begin != end) {
@@ -73,10 +106,13 @@ public class NearestPalindromeEnhanced {
                             diff = endInt - beginInt;
                         }
 
-                        int valToAdd = getValToAdd(i,diff);
+                        int valToAdd = getValToAddOrSubtract(i, diff);
                         String tempStr = temp.toString();
                         int tempInt = Integer.valueOf(tempStr);
-                        tempInt = tempInt + valToAdd;
+                        if(toAdd)
+                            tempInt = tempInt + valToAdd;
+                        else
+                            tempInt = tempInt - valToAdd;
 
                         tempStr = String.valueOf(tempInt);
                         if(isPalindrome(tempStr)) {
@@ -85,6 +121,8 @@ public class NearestPalindromeEnhanced {
                         }
                         temp = new StringBuilder(tempStr);
                     }
+                    i++;
+                    j--;
                 }
             }
         }
@@ -95,7 +133,7 @@ public class NearestPalindromeEnhanced {
         return temp;
     }
 
-    private int getValToAdd(int pos, int diff) {
+    private int getValToAddOrSubtract(int pos, int diff) {
         int valToAdd = 0;
         try {
             if(pos == 0) {
@@ -114,7 +152,7 @@ public class NearestPalindromeEnhanced {
         }
         catch (Exception e) {
             e.printStackTrace();
-            log.log(Level.SEVERE,"Exception in getValToAdd()");
+            log.log(Level.SEVERE,"Exception in getValToAddOrSubtract()");
         }
         return valToAdd;
     }
