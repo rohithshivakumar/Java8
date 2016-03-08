@@ -33,5 +33,12 @@ public class NearestPalindromeTest {
         assertEquals(num,121);
         num = NearestPalindrome.getNearestPalindrome(54647);
         assertEquals(num,54645);
+
+        num = NearestPalindrome.getClosestPalindrome(99);
+        assertEquals(num,101);
+        num = NearestPalindrome.getClosestPalindrome(131);
+        assertEquals(num,121);
+        num = NearestPalindrome.getClosestPalindrome(54647);
+        assertEquals(num,54645);
     }
 }
