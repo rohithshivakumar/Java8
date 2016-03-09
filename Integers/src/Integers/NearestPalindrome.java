@@ -70,7 +70,7 @@ public class NearestPalindrome {
 
     public static int getClosestPalindrome(int number) throws Exception {
         int closestPalindrome = 0;
-        String closestPalindromeStr;
+        StringBuilder closestPalindromeStr = new StringBuilder();
         try {
             //Validation
             if(!isValidInput(number)){
@@ -79,15 +79,19 @@ public class NearestPalindrome {
 
             String numStr = String.valueOf(number);
 
-            if(isAll9s(numStr)) {
-                closestPalindromeStr = "1";
+            if(number > 0 && number <= 9) {
+                return --number;
+            }
+            else if(isAll9s(numStr)) {
+                closestPalindromeStr.append("1");
                 for(int i = 1; i < numStr.length(); i++) {
-                    closestPalindromeStr.concat("0");
+                    closestPalindromeStr.append("0");
                 }
-                closestPalindromeStr.concat("1");
+                closestPalindromeStr.append("1");
+                closestPalindrome = Integer.parseInt(closestPalindromeStr.toString());
             }
             else {
-                closestPalindromeUtil(numStr);
+                closestPalindrome = closestPalindromeUtil(numStr);
             }
         }
         catch (Exception e) {
@@ -144,7 +148,7 @@ public class NearestPalindrome {
                     numVal += carry;
                     carry = numVal / 10;
                     numVal = numVal % 10;
-                    sb.setCharAt(mid, (char) numVal);
+                    sb.setCharAt(mid,Character.forDigit(numVal,10));
                     j = mid + 1;
                 }
                 else {
@@ -157,7 +161,7 @@ public class NearestPalindrome {
                     numVal += carry;
                     carry = numVal / 10;
                     numVal = numVal % 10;
-                    sb.setCharAt(i, (char) numVal);
+                    sb.setCharAt(i,Character.forDigit(numVal,10));
                     sb.setCharAt(j++,sb.charAt(i--));
                 }
             }
