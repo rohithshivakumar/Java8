@@ -1,5 +1,8 @@
 package Strings;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Roy wanted to increase his typing speed for programming contests. So, his friend advised him to type the sentence "The quick brown fox jumps over the lazy dog" repeatedly, because it is a pangram. (Pangrams are sentences constructed by using every letter of the alphabet at least once.)
 
@@ -40,12 +43,44 @@ package Strings;
  */
 public class Pangram {
 
-    public static boolean isPangramNoExtraSpace(String inputString){
-        return false;
+    public static boolean isPangramExtraSpace(String inputString) throws Exception {
+        try {
+            Set<Character> alphabets = new HashSet<Character>();
 
+            //Commenting this out so that tests can be run using JUnits without being prompted for user input.
+            /*Scanner sc = new Scanner(System.in);
+            String inputStr = sc.nextLine();*/
+            StringBuilder sb = new StringBuilder(inputString);
+            toLower(sb);
+
+            for(int i = 0; i < sb.length(); i++) {
+                if(' ' != sb.charAt(i)) {
+                    alphabets.add(sb.charAt(i));
+                }
+            }
+
+            if(alphabets.size() < 26)
+                return false;
+            else
+                return true;
+        }
+        catch (Exception e) {
+            System.err.println("Failed to determine if the input string is a Pangram. " + e.getMessage());
+            throw e;
+        }
     }
 
-    public static boolean isPangramExtraSpace(String inputString){
+    private static void toLower(StringBuilder sb) {
+        if(null != sb) {
+            for(int i = 0; i < sb.length(); i++) {
+                if(sb.charAt(i) != ' ' && sb.charAt(i) >= 'A' && sb.charAt(i) <= 'Z') {
+                    sb.setCharAt(i,Character.toLowerCase(sb.charAt(i)));
+                }
+            }
+        }
+    }
+
+    public static boolean isPangramNoExtraSpace(String inputString){
         return false;
 
     }
