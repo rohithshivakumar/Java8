@@ -23,6 +23,7 @@ public class RotateMatrix90 {
 
     public int[][] rotateMatrixRightNotInplace(int[][] arr) throws Exception {
         int[][] rotatedArr = null;
+        String msg = null;
         try {
             if(null != arr) {
                 int row = arr.length;
@@ -36,11 +37,71 @@ public class RotateMatrix90 {
                     }
                 }
             }
+            else {
+                msg = "Input array is null";
+                throw new IllegalArgumentException(msg);
+            }
         }
         catch (Exception e) {
-            System.err.println("Exception occured while rotating matrix");
-            throw e;
+            msg = "Exception occured while rotating matrix to the right";
+            System.err.println(msg + "." + e.getMessage());
+            throw new Exception(msg,e);
         }
         return rotatedArr;
+    }
+
+    public int[][] rotateMatrixLeftNotInPlace(int[][] arr) throws Exception {
+        int[][] rotateArr = null;
+        String msg = null;
+        try {
+            if(null != arr) {
+                int row = arr.length;
+                int col = arr[0].length;
+
+                rotateArr = new int[col][row];
+
+                for(int n = 0; n < row; n++) {
+                    for(int m = 0; m < col; m++) {
+                        rotateArr[col-m-1][n]  = arr[n][m];
+                    }
+                }
+            }
+            else {
+                msg = "Input array is null";
+                throw new IllegalArgumentException(msg);
+            }
+        }
+        catch (Exception e) {
+            msg = "Exception occured while rotating matrix to the left";
+            System.err.println(msg + "." + e.getMessage());
+            throw new Exception(msg,e);
+        }
+        return rotateArr;
+    }
+
+    public int[][] rotateMatrixRightInPlace(int[][] arr) throws Exception {
+        String msg = null;
+        try {
+            //ToDo :
+        }
+        catch (Exception e) {
+            msg = "Exception occured while rotating matrix to the right in place";
+            System.err.println(msg + "." + e.getMessage());
+            throw new Exception(msg,e);
+        }
+        return null;
+    }
+
+    public int[][] rotateMatrixLeftInPlace(int[][] arr) throws Exception {
+        String msg = null;
+        try {
+            // ToDo :
+        }
+        catch (Exception e) {
+            msg = "Exception occured while rotating matrix to the left";
+            System.err.println(msg + "." + e.getMessage());
+            throw new Exception(msg,e);
+        }
+        return null;
     }
 }
