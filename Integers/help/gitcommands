@@ -26,4 +26,3 @@ git update-index --no-assume-unchanged path/to/file
        git add <file(s)>
        git commit -m "Info about checkin"
        git push origin <current_branch_name>
-

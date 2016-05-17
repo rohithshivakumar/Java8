@@ -32,4 +32,5 @@ Design
 Bit Manipulation
 
 1. XOR ( Same then yields zero, else yields one) Ex 0^0 is 1 but 0^1 is 0
-2.
+
+Many recursive algos (especially with exponential runtimes), we can optimize this through memoization (a form of dynamic programming)
