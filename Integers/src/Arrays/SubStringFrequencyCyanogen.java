@@ -29,13 +29,13 @@ public class SubStringFrequencyCyanogen {
         int M = Integer.parseInt(lineSplit[2]);
         String s = br.readLine();
 
-        findSubStrings(s,strLen,K,L,M);
-        int max = getMaxFrequency();
+
+        int max = findSubStrings(s,strLen,K,L,M);
 
         System.out.println(max);
     }
 
-    private static int getMaxFrequency() {
+    private static int getMaxFrequency(Map<String, Integer> subStringMap) {
         int max = 0;
 
         for(String key : subStringMap.keySet()){
@@ -49,16 +49,15 @@ public class SubStringFrequencyCyanogen {
     }
 
     public static int findSubStrings(String s , int strLen, int K, int L , int M){
-
+        Map<String, Integer> subStringMap = new HashMap<>();;
         for(int i= K; i <= L; i++){
-            generateSubString(s,i,M);
+           generateSubString(subStringMap, s,i,M);
         }
-        return getMaxFrequency();
+        return getMaxFrequency(subStringMap);
 
     }
 
-    public static void generateSubString(String s, int subStringLength, int allowedUniqueChars){
-
+    public static void generateSubString(Map<String, Integer> subStringMap,String s, int subStringLength, int allowedUniqueChars){
         for(int i =0 ; i < s.length() ; i++){
             int startIndex = i;
             int endIndex = i + subStringLength;
