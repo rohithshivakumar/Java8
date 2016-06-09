@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 /**
  * Created by arjun_000 on 6/2/2016.
  */
-public class SubStringFrequencyCyanogenTest {
+public class SubStringFrequencyTest {
 
     @Before
     public void setUp() throws Exception {
@@ -23,8 +23,8 @@ public class SubStringFrequencyCyanogenTest {
 
     @Test
     public void testFindSubStrings() throws Exception {
-        assertEquals(1,SubStringFrequencyCyanogen.findSubStrings("abcde",5,2,4,26));
-        assertEquals(3,SubStringFrequencyCyanogen.findSubStrings("ababab",6,2,3,4));
+        assertEquals(1, SubStringFrequency.findSubStrings("abcde",5,2,4,26));
+        assertEquals(3, SubStringFrequency.findSubStrings("ababab",6,2,3,4));
 
     }
 
