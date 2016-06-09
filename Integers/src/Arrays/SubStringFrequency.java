@@ -16,7 +16,7 @@ import java.util.Map;
  * o/p: 1
  *
  */
-public class SubStringFrequencyCyanogen {
+public class SubStringFrequency {
     public static Map<String, Integer> subStringMap = new HashMap<>();
     public static void main(String args[] ) throws Exception {
         /* Enter your code here. Read input from STDIN. Print output to STDOUT */
