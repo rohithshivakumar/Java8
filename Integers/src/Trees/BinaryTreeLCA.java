@@ -51,6 +51,8 @@ package Trees;
  g,d,f -> return null
 
  return f
+
+ Asked in n2g4n1yc
  */
 public class BinaryTreeLCA {
 
