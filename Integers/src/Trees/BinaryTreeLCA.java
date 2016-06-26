@@ -57,11 +57,19 @@ package Trees;
 public class BinaryTreeLCA {
 
     TreeNode getLCA(TreeNode root, TreeNode n1, TreeNode n2){
-       /* if(!validateNode(n1) || !validateNode(n2){
+       if(!validateNode(root, n1) || !validateNode(root, n2)){
             return null;
-        }*/
+       }
         return getLCACore(root, n1,n2);
 
+    }
+
+    private boolean validateNode(TreeNode root, TreeNode node) {
+        if(root == null) return false;
+
+        if(root == node)return true;
+        return validateNode(root.left,node) ||
+                validateNode(root.right, node);
     }
 
     TreeNode getLCACore(TreeNode root, TreeNode n1, TreeNode n2){
@@ -74,8 +82,8 @@ public class BinaryTreeLCA {
             return root;
         }
 
-        TreeNode left = getLCA(root.left, n1,n2);
-        TreeNode right = getLCA(root.right, n1, n2);
+        TreeNode left = getLCACore(root.left, n1,n2);
+        TreeNode right = getLCACore(root.right, n1, n2);
 
         if( left != null && right != null){
             return root;
