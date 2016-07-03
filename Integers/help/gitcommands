@@ -26,3 +26,4 @@ git update-index --no-assume-unchanged path/to/file
        git add <file(s)>
        git commit -m "Info about checkin"
        git push origin <current_branch_name>
+6. github for dummies https://backlogtool.com/git-guide/en/reference/
