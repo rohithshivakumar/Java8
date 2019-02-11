@@ -16,6 +16,8 @@ import java.util.HashSet;
  * Questions to ask :
  * 1) Can the longer and shorter board be of same length (Then you can use ArrayList instead of HashSet and also the
  * number of possible lengths for k boards will always be 1)
+ *
+ * https://github.com/LLihao/algorithms/blob/master/CC189/16_Moderate/DivingBoard.java
  */
 public class DivingBoard {
     int longerBoardLength;
@@ -29,7 +31,8 @@ public class DivingBoard {
     }
 
     /**
-     * Given the length of short board, long board and the number of boards, determines the number of possible board
+     * Given the length of short board, long board and the number of boards,
+     * determines the number of possible board
      * sizes possible
      * @return
      * @throws Exception
