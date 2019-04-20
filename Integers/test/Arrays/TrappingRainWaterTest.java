@@ -24,6 +24,8 @@ public class TrappingRainWaterTest {
         assertEquals(6,test.findWater(arr));
         assertEquals(test.findWater(arr), test.findWaterNoExtraMem(arr));
 
+
+
     }
 
 }
